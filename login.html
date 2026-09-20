@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Liquid Admin - 系统登录</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" href="./style.css" />
+    <script>
+      // 提前加载主题偏好，防止页面在渲染时出现深浅色闪烁 (FOUC)
+      (function() {
+        const savedTheme = localStorage.getItem('liquid_admin_theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      })();
+    </script>
+  </head>
+  <body class="login-body">
+    <!-- 环境光晕折射层 -->
+    <div class="ambient-lights" aria-hidden="true">
+      <div class="ambient-orb orb-1"></div>
+      <div class="ambient-orb orb-2"></div>
+      <div class="ambient-orb orb-3"></div>
+    </div>
+
+    <div class="login-container">
+      <div class="login-glass-card">
+        <!-- Logo 与系统名称 -->
+        <div class="login-header">
+          <div class="login-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h1 class="login-title">Liquid Admin</h1>
+          <p class="login-subtitle">Apple Glass OS</p>
+        </div>
+
+        <!-- 登录表单 -->
+        <form id="login-form" class="login-form">
+          <!-- 登录失败提示框 -->
+          <div class="login-error-msg" id="login-error" style="display: none;">用户名或密码错误</div>
+
+          <div class="login-input-group">
+            <label class="login-label" for="username">用户名</label>
+            <input type="text" id="username" name="username" class="form-input" placeholder="默认体验账号：admin" required autocomplete="username" />
+          </div>
+
+          <div class="login-input-group">
+            <label class="login-label" for="password">密码</label>
+            <input type="password" id="password" name="password" class="form-input" placeholder="默认体验密码：123456" required autocomplete="current-password" />
+          </div>
+
+          <!-- Apple iOS 风格记住状态切换器 -->
+          <div class="login-options">
+            <label class="ios-toggle-label" for="remember-me">
+              <span class="toggle-text">记住登录状态</span>
+              <input type="checkbox" id="remember-me" name="remember_me" class="ios-toggle-checkbox" checked />
+              <div class="ios-toggle-switch"></div>
+            </label>
+          </div>
+
+          <button type="submit" class="glass-btn btn-primary login-submit-btn" id="login-btn">
+            <span>登录系统</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 独立的登录逻辑脚本 -->
+    <script src="./login.js"></script>
+  </body>
+</html>
